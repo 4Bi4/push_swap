@@ -6,7 +6,7 @@
 /*   By: labia-fe <labia-fe@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 16:16:06 by labia-fe          #+#    #+#             */
-/*   Updated: 2025/02/20 17:29:06 by labia-fe         ###   ########.fr       */
+/*   Updated: 2025/02/24 18:29:03 by labia-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_stack	*create_node(int index, int value)
 
 	node = (t_stack *)malloc(sizeof(t_stack));
 	if (!node)
-		return(write(2, "¡[ERROR]! malloc somehow failed 💀\n", 94), -1);
+		return (write(2, "¡[ERROR]! malloc somehow failed 💀\n", 94), NULL);
 	node->index = index;
 	node->value = value;
 	node->next = NULL;
@@ -56,19 +56,27 @@ t_stack	*create_node(int index, int value)
 
 void	link_node(t_stack **first, int index, int value)
 {
-	t_stack *new_node;
+	t_stack	*new_node;
+	t_stack	*temp;
 
 	new_node = create_node(index, value);
 	if (!new_node)
 		return ;
 	if (!*first)
-	
+		*first = new_node;
+	else
+	{
+		temp = *first;
+		while (temp->next)
+			temp = temp->next;
+		temp->next = new_node;
+	}
 }
 
 void	print_list(t_stack *first)
 {
-	t_stack *temp;
-	
+	t_stack	*temp;
+
 	temp = first;
 	while (temp)
 	{
@@ -79,12 +87,20 @@ void	print_list(t_stack *first)
 
 int	main(int argc, char **argv)
 {
-	t_stack	test;
-	int i = 1;
+	t_stack *test;
+	char	**a;
+	int i;
 
-	(void)argv;
-	while (i <= argc)
+	i = 1;
+	if (argc < 2)
+		return (write(2, "Error\n", 7), 1);
+	if (argc == 2)
+		
+	while (i < argc)
+	{
 		link_node(&test, i, ft_atoi(argv[i]));
-
+		i++;
+	}
+	print_list(test);
 	return (0);
 }
