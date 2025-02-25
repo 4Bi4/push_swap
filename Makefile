@@ -1,10 +1,10 @@
-CC			=	cc -I$(INCLUDE) # -Wall -Wextra -Werror -g3 -fsanitize=address 
+CC			=	cc -I$(INCLUDE) -g3 # -Wall -Wextra -Werror -fsanitize=address 
 
 NAME		=	push_swap
 INCLUDE		=	include
 SRCDIR		=	src/
 OBJDIR		=	objs/
-SRCS		=	$(SRCDIR)push_swap.c
+SRCS		=	$(SRCDIR)push_swap.c $(SRCDIR)utils_args.c $(SRCDIR)ft_split.c
 OBJS		=	$(SRCS:$(SRCDIR)%.c=$(OBJDIR)%.o)
 
 AR			=	ar rcs

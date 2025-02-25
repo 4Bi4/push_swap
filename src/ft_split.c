@@ -6,11 +6,21 @@
 /*   By: labia-fe <labia-fe@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 13:52:13 by labia-fe          #+#    #+#             */
-/*   Updated: 2025/02/24 18:06:19 by labia-fe         ###   ########.fr       */
+/*   Updated: 2025/02/25 19:23:42 by labia-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
+
+int	ft_strlen(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
 
 void	ft_freeall(char **s)
 {

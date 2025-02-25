@@ -6,7 +6,7 @@
 /*   By: labia-fe <labia-fe@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 16:16:06 by labia-fe          #+#    #+#             */
-/*   Updated: 2025/02/24 18:29:03 by labia-fe         ###   ########.fr       */
+/*   Updated: 2025/02/25 20:06:54 by labia-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,19 +87,23 @@ void	print_list(t_stack *first)
 
 int	main(int argc, char **argv)
 {
-	t_stack *test;
+	t_stack	*test;
 	char	**a;
-	int i;
+	int		i;
 
-	i = 1;
+	test = NULL;
 	if (argc < 2)
 		return (write(2, "Error\n", 7), 1);
 	if (argc == 2)
-		
-	while (i < argc)
+		str_check(&test, argv[1]);
+	if (argc > 2)
 	{
-		link_node(&test, i, ft_atoi(argv[i]));
-		i++;
+		i = 1;
+		while (i < argc)
+		{
+			link_node(&test, i, ft_atoi(argv[i]));
+			i++;
+		}
 	}
 	print_list(test);
 	return (0);
