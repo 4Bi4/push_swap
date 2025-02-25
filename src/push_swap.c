@@ -6,7 +6,7 @@
 /*   By: labia-fe <labia-fe@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 16:16:06 by labia-fe          #+#    #+#             */
-/*   Updated: 2025/02/25 20:06:54 by labia-fe         ###   ########.fr       */
+/*   Updated: 2025/02/25 20:16:31 by labia-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_stack	*create_node(int index, int value)
 
 	node = (t_stack *)malloc(sizeof(t_stack));
 	if (!node)
-		return (write(2, "¡[ERROR]! malloc somehow failed 💀\n", 94), NULL);
+		return (write(2, "Error\n", 7), NULL);
 	node->index = index;
 	node->value = value;
 	node->next = NULL;
