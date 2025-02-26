@@ -6,11 +6,13 @@
 /*   By: labia-fe <labia-fe@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 14:59:36 by labia-fe          #+#    #+#             */
-/*   Updated: 2025/02/25 20:06:31 by labia-fe         ###   ########.fr       */
+/*   Updated: 2025/02/26 19:09:20 by labia-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+
+
 
 int	arg_loader(t_stack **stack, char *str)
 {
