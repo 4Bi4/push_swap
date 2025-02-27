@@ -6,13 +6,11 @@
 /*   By: labia-fe <labia-fe@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 14:59:36 by labia-fe          #+#    #+#             */
-/*   Updated: 2025/02/26 19:09:20 by labia-fe         ###   ########.fr       */
+/*   Updated: 2025/02/27 17:15:00 by labia-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
-
 
 int	arg_loader(t_stack **stack, char *str)
 {
@@ -38,7 +36,8 @@ int	str_check(t_stack **stack, char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (!(str[i] >= '0' && str[i] <= '9') && str[i] != ' ' && str[i] != '+' && str[i] != '-')
+		if (!(str[i] >= '0' && str[i] <= '9') && str[i] != ' ' && str[i] != '+'
+			&& str[i] != '-')
 			return (write(2, "Error\n", 7), 1);
 		i++;
 	}

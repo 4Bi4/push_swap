@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: labia-fe <labia-fe@student.42madrid>       +#+  +:+       +#+        */
+/*   By: labia-fe <labia-fe@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 13:25:54 by labia-fe          #+#    #+#             */
-/*   Updated: 2024/10/10 11:30:51 by labia-fe         ###   ########.fr       */
+/*   Updated: 2025/02/27 16:14:17 by labia-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_atoi(const char *c)
 {

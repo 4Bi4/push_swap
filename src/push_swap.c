@@ -6,40 +6,11 @@
 /*   By: labia-fe <labia-fe@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 16:16:06 by labia-fe          #+#    #+#             */
-/*   Updated: 2025/02/25 20:16:31 by labia-fe         ###   ########.fr       */
+/*   Updated: 2025/02/27 16:04:29 by labia-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
-int	ft_atoi(const char *c)
-{
-	int	a;
-	int	i;
-	int	sign;
-
-	i = 0;
-	a = 0;
-	sign = 1;
-	while ((c[i] >= 9 && c[i] <= 13) || c[i] == ' ')
-	{
-		i++;
-	}
-	if (c[i] == '-' || c[i] == '+')
-	{
-		if (c[i] == '-')
-		{
-			sign = -sign;
-		}
-		i++;
-	}
-	while (c[i] >= '0' && c[i] <= '9')
-	{
-		a = a * 10 + (c[i] - '0');
-		i++;
-	}
-	return (a * sign);
-}
 
 t_stack	*create_node(int index, int value)
 {

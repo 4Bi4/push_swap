@@ -6,7 +6,7 @@
 /*   By: labia-fe <labia-fe@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 16:15:58 by labia-fe          #+#    #+#             */
-/*   Updated: 2025/02/25 20:16:08 by labia-fe         ###   ########.fr       */
+/*   Updated: 2025/02/27 16:17:39 by labia-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include "../src/libft/libft.h"
 
 typedef struct s_stack
 {
@@ -25,7 +26,6 @@ typedef struct s_stack
 	struct s_stack	*next;
 }					t_stack;
 
-int		ft_atoi(const char *c);
 int		str_check(t_stack **stack, char *str);
 
 char	**ft_split(char const *s, char c);
