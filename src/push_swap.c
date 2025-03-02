@@ -6,7 +6,7 @@
 /*   By: labia-fe <labia-fe@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 16:16:06 by labia-fe          #+#    #+#             */
-/*   Updated: 2025/02/27 16:04:29 by labia-fe         ###   ########.fr       */
+/*   Updated: 2025/03/01 15:14:30 by labia-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,17 +65,17 @@ int	main(int argc, char **argv)
 	test = NULL;
 	if (argc < 2)
 		return (write(2, "Error\n", 7), 1);
-	if (argc == 2)
-		str_check(&test, argv[1]);
-	if (argc > 2)
+	if (argc >= 2)
 	{
 		i = 1;
 		while (i < argc)
 		{
-			link_node(&test, i, ft_atoi(argv[i]));
+			if (str_check(&test, argv[i]) != 0)
+				return (1);
 			i++;
 		}
+		print_list(test);
+		free_list(&test);
 	}
-	print_list(test);
 	return (0);
 }
