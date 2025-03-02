@@ -6,7 +6,7 @@
 /*   By: labia-fe <labia-fe@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 16:16:06 by labia-fe          #+#    #+#             */
-/*   Updated: 2025/03/01 15:14:30 by labia-fe         ###   ########.fr       */
+/*   Updated: 2025/03/02 20:03:27 by labia-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,8 @@ int	main(int argc, char **argv)
 				return (1);
 			i++;
 		}
-		print_list(test);
+		if (dup_check(&test) == 0)
+			print_list(test);
 		free_list(&test);
 	}
 	return (0);

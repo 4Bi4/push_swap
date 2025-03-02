@@ -6,41 +6,49 @@
 /*   By: labia-fe <labia-fe@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 14:59:36 by labia-fe          #+#    #+#             */
-/*   Updated: 2025/03/01 17:07:52 by labia-fe         ###   ########.fr       */
+/*   Updated: 2025/03/02 20:02:21 by labia-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void free_list(t_stack **stack)
+void	free_list(t_stack **stack)
 {
-    t_stack *tmp;
+	t_stack	*tmp;
 
-    if (!stack || !*stack)
-        return;
-    while (*stack)
-    {
-        tmp = *stack;
-        *stack = (*stack)->next;
-        free(tmp);
-    }
-    *stack = NULL;
+	if (!stack || !*stack)
+		return ;
+	while (*stack)
+	{
+		tmp = *stack;
+		*stack = (*stack)->next;
+		free(tmp);
+	}
+	*stack = NULL;
 }
 
-int	arg_loader(t_stack **stack, char *str)
+int	arg_loader(t_stack **stack, char *str, int split)
 {
 	static int	index = 1;
 	char		**args;
 	int			i;
 
 	i = 0;
-	args = ft_split(str, ' ');
-	if (!args)
-		return (1);
-	while (args[i])
+	if (split == 1)
 	{
-		link_node(stack, index, ft_atoi(args[i]));
-		i++;
+		args = ft_split(str, ' ');
+		if (!args)
+			return (1);
+		while (args[i])
+		{
+			link_node(stack, index, ft_atoi(args[i]));
+			i++;
+			index++;
+		}
+	}
+	else
+	{
+		link_node(stack, index, ft_atoi(str));
 		index++;
 	}
 	return (0);
@@ -62,10 +70,27 @@ int	str_check(t_stack **stack, char *str)
 			return (write(2, "Error\n", 7), 1);
 		i++;
 	}
-	if (split = 1)
+	if (arg_loader(stack, str, split) != 0)
+		return (1);
+	return (0);
+}
+
+int	dup_check(t_stack **stack)
+{
+	t_stack	*current;
+	t_stack	*temp;
+
+	current = *stack;
+	while (current)
 	{
-		if (arg_loader(stack, str) != 0)
-			return (1);
+		temp = current->next;
+		while (temp)
+		{
+			if (current->value == temp->value)
+				return(write(2, "Error\n", 7), 1);
+			temp = temp->next;
+		}
+		current = current->next;
 	}
 	return (0);
 }
