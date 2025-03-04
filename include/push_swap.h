@@ -6,7 +6,7 @@
 /*   By: labia-fe <labia-fe@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 16:15:58 by labia-fe          #+#    #+#             */
-/*   Updated: 2025/03/02 20:03:04 by labia-fe         ###   ########.fr       */
+/*   Updated: 2025/03/04 18:56:30 by labia-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ int		str_check(t_stack **stack, char *str);
 
 char	**ft_split(char const *s, char c);
 
+void	free_matrix(char **mtrx);
 void 	free_list(t_stack **stack);
-void	link_node(t_stack **first, int index, int value);
+void	link_node(t_stack **first, int value);
+
+t_stack	*swap(t_stack **stack);
 
 #endif

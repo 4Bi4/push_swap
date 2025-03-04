@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   moves.c                                            :+:      :+:    :+:   */
+/*   utils_aux.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: labia-fe <labia-fe@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/20 16:32:25 by labia-fe          #+#    #+#             */
-/*   Updated: 2025/03/04 18:20:28 by labia-fe         ###   ########.fr       */
+/*   Created: 2025/03/04 16:51:14 by labia-fe          #+#    #+#             */
+/*   Updated: 2025/03/04 16:53:33 by labia-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-t_stack	*swap(t_stack **stack)
+void	free_matrix(char **mtrx)
 {
-	int		swap;
-	t_stack *first;
+	int i;
 
-	first = *stack;
-	swap = first->value;
-	first->value = first->next->value;
-	first->next->value = swap;
-	return (first);
+	i = 0;
+	while (mtrx[i])
+	{
+		free(mtrx[i]);
+		mtrx[i] = NULL;
+		i++;
+	}
+	if (mtrx)
+		free(mtrx);
+	mtrx = NULL;
+	return ;
 }

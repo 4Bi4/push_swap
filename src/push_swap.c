@@ -6,31 +6,31 @@
 /*   By: labia-fe <labia-fe@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 16:16:06 by labia-fe          #+#    #+#             */
-/*   Updated: 2025/03/02 20:03:27 by labia-fe         ###   ########.fr       */
+/*   Updated: 2025/03/04 18:57:33 by labia-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-t_stack	*create_node(int index, int value)
+t_stack	*create_node(int value)
 {
 	t_stack	*node;
 
 	node = (t_stack *)malloc(sizeof(t_stack));
 	if (!node)
 		return (write(2, "Error\n", 7), NULL);
-	node->index = index;
+	node->index = -1;
 	node->value = value;
 	node->next = NULL;
 	return (node);
 }
 
-void	link_node(t_stack **first, int index, int value)
+void	link_node(t_stack **first, int value)
 {
 	t_stack	*new_node;
 	t_stack	*temp;
 
-	new_node = create_node(index, value);
+	new_node = create_node(value);
 	if (!new_node)
 		return ;
 	if (!*first)
@@ -58,11 +58,12 @@ void	print_list(t_stack *first)
 
 int	main(int argc, char **argv)
 {
-	t_stack	*test;
-	char	**a;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
 	int		i;
 
-	test = NULL;
+	stack_a = NULL;
+	stack_b = NULL;
 	if (argc < 2)
 		return (write(2, "Error\n", 7), 1);
 	if (argc >= 2)
@@ -70,13 +71,18 @@ int	main(int argc, char **argv)
 		i = 1;
 		while (i < argc)
 		{
-			if (str_check(&test, argv[i]) != 0)
+			if (str_check(&stack_a, argv[i]) != 0)
 				return (1);
 			i++;
 		}
-		if (dup_check(&test) == 0)
-			print_list(test);
-		free_list(&test);
+		if (dup_check(&stack_a) == 0)
+		{
+			print_list(stack_a);
+			stack_a = swap(&stack_a);
+			write(1, "\n ---------------- \n\n", 21);
+			print_list(stack_a);
+		}
+		free_list(&stack_a);
 	}
 	return (0);
 }
