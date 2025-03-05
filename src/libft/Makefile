@@ -19,14 +19,13 @@ all: $(NAME)
 $(NAME): $(OBJ)
 		@ar rcs $@ $^
 %.o: %.c
-		@$(CC) $(CCFLAGS) -c -o $@ $<
-#		@echo "Compiling Libft... 📖📚"
+		$(CC) $(CCFLAGS) -c -o $@ $<
 
 clean:
-		@rm -f $(OBJ)
+		rm -f $(OBJ)
 
 fclean:  clean
-		@rm -f $(NAME)
+		rm -f $(NAME)
 
 re: clean fclean all
 

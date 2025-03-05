@@ -6,7 +6,7 @@
 /*   By: labia-fe <labia-fe@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 16:15:58 by labia-fe          #+#    #+#             */
-/*   Updated: 2025/03/04 18:56:30 by labia-fe         ###   ########.fr       */
+/*   Updated: 2025/03/05 16:12:42 by labia-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,19 @@ typedef struct s_stack
 	struct s_stack	*next;
 }					t_stack;
 
+int		ft_lstsize(t_stack *lst);
 int		dup_check(t_stack **stack);
 int		str_check(t_stack **stack, char *str);
 
 char	**ft_split(char const *s, char c);
 
+void	indexer(t_stack *stack);
 void	free_matrix(char **mtrx);
 void 	free_list(t_stack **stack);
 void	link_node(t_stack **first, int value);
 
 t_stack	*swap(t_stack **stack);
+t_stack	*rotate(t_stack **stack);
+t_stack	*rev_rotate(t_stack	**stack);
 
 #endif

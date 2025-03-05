@@ -6,7 +6,7 @@
 /*   By: labia-fe <labia-fe@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 16:16:06 by labia-fe          #+#    #+#             */
-/*   Updated: 2025/03/04 18:57:33 by labia-fe         ###   ########.fr       */
+/*   Updated: 2025/03/05 16:13:03 by labia-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,20 @@ int	main(int argc, char **argv)
 		}
 		if (dup_check(&stack_a) == 0)
 		{
+			write(1, "\n", 1);
+			indexer(stack_a);
 			print_list(stack_a);
 			stack_a = swap(&stack_a);
-			write(1, "\n ---------------- \n\n", 21);
+			write(1, "\n ---------------- \n     SWAPPING\n ---------------- \n\n", 54);
+			print_list(stack_a);
+			stack_a = rotate(&stack_a);
+			write(1, "\n ----------------- \n    GET ROTATED\n ----------------- \n\n", 58);
+			print_list(stack_a);
+			stack_a = rev_rotate(&stack_a);
+			write(1, "\n ----------------- \n  GET REV_ROTATED\n ----------------- \n\n", 60);
 			print_list(stack_a);
 		}
 		free_list(&stack_a);
 	}
-	return (0);
+	return (write(1, "\n", 1), 0);
 }

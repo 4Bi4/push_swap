@@ -6,7 +6,7 @@
 /*   By: labia-fe <labia-fe@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 14:59:36 by labia-fe          #+#    #+#             */
-/*   Updated: 2025/03/04 18:58:13 by labia-fe         ###   ########.fr       */
+/*   Updated: 2025/03/05 15:17:59 by labia-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,35 @@ void	free_list(t_stack **stack)
 		free(tmp);
 	}
 	*stack = NULL;
+}
+
+void	indexer(t_stack *stack)
+{
+	int 	i;
+	int		max;
+	t_stack	*first;
+	t_stack	*lower;
+
+	i = 0;
+	max = ft_lstsize(stack);
+	first = stack;
+	lower = stack;
+	while (i < max)
+	{
+		stack = first;
+		while (stack->index != -1)
+			stack = stack->next;
+		lower = stack;
+		while (stack)
+		{
+			if (stack->value < lower->value && stack->index == -1)
+				lower = stack;
+			stack = stack->next;
+		}
+		lower->index = i;
+		i++;
+	}
+	return ;
 }
 
 int	arg_loader(t_stack **stack, char *str, int split)
