@@ -6,7 +6,7 @@
 /*   By: labia-fe <labia-fe@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 16:32:25 by labia-fe          #+#    #+#             */
-/*   Updated: 2025/03/05 16:12:23 by labia-fe         ###   ########.fr       */
+/*   Updated: 2025/03/07 19:10:33 by labia-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,13 @@ t_stack	*swap(t_stack **stack)
 	t_stack *first;
 
 	first = *stack;
-	swap = first->next;
-	first->next = swap->next;
-	swap->next = first;
-	first = swap;
+	if (first->next != NULL)
+	{
+		swap = first->next;
+		first->next = swap->next;
+		swap->next = first;
+		first = swap;
+	}
 	return (first);
 }
 
@@ -56,4 +59,18 @@ t_stack	*rev_rotate(t_stack	**stack)
 	swap->next = first;
 	temp->next = NULL;
 	return (swap);
+}
+
+
+void push(t_stack **src, t_stack **dst)
+{
+	t_stack	*first_src;
+	t_stack	*first_dst;
+	t_stack	*swap;
+
+	first_src = *src;
+	first_dst = *dst;
+	swap = first_src;
+	*src = first_src->next;
+	swap->next = *dst;
 }

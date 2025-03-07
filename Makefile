@@ -1,4 +1,4 @@
-CC			=	cc -I$(INCLUDE) -g3 -Wall -Wextra -Werror -fsanitize=address 
+CC			=	cc -I$(INCLUDE) -g3 -Wall -Wextra -Werror #-fsanitize=address 
 
 NAME		=	push_swap
 INCLUDE		=	include
@@ -24,7 +24,7 @@ $(NAME):    $(OBJS)
 							2) dots=".." ;; \
 							3) dots="..."; i=0 ;; \
 						esac; \
-						printf "Creating libft%s\r" "$$dots"; \
+						printf "Compiling libft%s\r" "$$dots"; \
 						sleep 0.3; \
 						i=$$((i + 1)); \
 					done & \
