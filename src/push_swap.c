@@ -48,7 +48,12 @@ void	print_list(t_stack *first)
 {
 	t_stack	*temp;
 
-	temp = first;
+	if (!first)
+	{
+		write(1, "(null)\n", 8);
+		return ;
+	}
+		temp = first;
 	while (temp)
 	{
 		printf("index: %d, value: %d\n", temp->index, temp->value);
@@ -95,6 +100,12 @@ int	main(int argc, char **argv)
 			print_list(stack_a);
 			write(1, "\n     [STACK B]\n\n", 17);
 			print_list(stack_b);
+			write(1, "\n\n ----------------- \n     PUSH TO A\n ----------------- \n\n", 58);
+			push(&stack_b, &stack_a);
+			write(1, "\n     [STACK B]\n\n", 17);
+			print_list(stack_b);
+			write(1, "\n     [STACK A]\n\n", 17);
+			print_list(stack_a);
 		}
 		free_list(&stack_a);
 		free_list(&stack_b);
