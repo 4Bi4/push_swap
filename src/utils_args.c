@@ -69,13 +69,16 @@ int	arg_loader(t_stack **stack, char *str, int split)
 			return (1);
 		while (args[i])
 		{
-			link_node(stack, ft_atoi(args[i]));
+			if (ft_atol(args[i]) < INT_MIN || ft_atol(args[i]) > INT_MAX)
+				return (1);
+			link_node(stack, ft_atoi(args[i]));+
 			i++;
 		}
 		free_matrix(args);
 	}
-	else
-		link_node(stack, ft_atoi(str));
+	if (ft_atol(str) < INT_MIN || ft_atol(str) > INT_MAX)
+		return (1);
+	link_node(stack, ft_atoi(str));
 	return (0);
 }
 
@@ -99,7 +102,7 @@ int	str_check(t_stack **stack, char *str)
 		i++;
 	}
 	if (arg_loader(stack, str, split) != 0)
-		return (1);
+		return (write(2, "Error\n", 7), 1);
 	return (0);
 }
 

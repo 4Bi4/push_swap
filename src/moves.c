@@ -61,8 +61,7 @@ t_stack	*rev_rotate(t_stack	**stack)
 	return (swap);
 }
 
-
-void push(t_stack **src, t_stack **dst)
+void	push(t_stack **src, t_stack **dst)
 {
 	t_stack	*first_src;
 	t_stack	*first_dst;
@@ -72,5 +71,6 @@ void push(t_stack **src, t_stack **dst)
 	first_dst = *dst;
 	swap = first_src;
 	*src = first_src->next;
-	swap->next = *dst;
+	swap->next = first_dst;
+	*dst = swap;
 }

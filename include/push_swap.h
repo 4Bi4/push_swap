@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 # include "../src/libft/libft.h"
 
 typedef struct s_stack
@@ -35,6 +36,7 @@ char	**ft_split(char const *s, char c);
 void	indexer(t_stack *stack);
 void	free_matrix(char **mtrx);
 void 	free_list(t_stack **stack);
+void	push(t_stack **src, t_stack **dst);
 void	link_node(t_stack **first, int value);
 
 t_stack	*swap(t_stack **stack);

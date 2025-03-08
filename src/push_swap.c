@@ -80,17 +80,24 @@ int	main(int argc, char **argv)
 			write(1, "\n", 1);
 			indexer(stack_a);
 			print_list(stack_a);
-			stack_a = swap(&stack_a);
 			write(1, "\n ---------------- \n     SWAPPING\n ---------------- \n\n", 54);
+			stack_a = swap(&stack_a);
 			print_list(stack_a);
-			stack_a = rotate(&stack_a);
 			write(1, "\n ----------------- \n    GET ROTATED\n ----------------- \n\n", 58);
+			stack_a = rotate(&stack_a);
 			print_list(stack_a);
-			stack_a = rev_rotate(&stack_a);
 			write(1, "\n ----------------- \n  GET REV_ROTATED\n ----------------- \n\n", 60);
+			stack_a = rev_rotate(&stack_a);
 			print_list(stack_a);
+			write(1, "\n ----------------- \n     PUSH TO B\n ----------------- \n\n", 57);
+			push(&stack_a, &stack_b);
+			write(1, "\n     [STACK A]\n\n", 17);
+			print_list(stack_a);
+			write(1, "\n     [STACK B]\n\n", 17);
+			print_list(stack_b);
 		}
 		free_list(&stack_a);
+		free_list(&stack_b);
 	}
 	return (write(1, "\n", 1), 0);
 }
