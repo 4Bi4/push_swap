@@ -18,7 +18,7 @@ t_stack	*swap(t_stack **stack)
 	t_stack *first;
 
 	first = *stack;
-	if (first->next != NULL)
+	if (first->next)
 	{
 		swap = first->next;
 		first->next = swap->next;

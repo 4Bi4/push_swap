@@ -21,13 +21,16 @@ $(NAME):    $(OBJS)
 					i=1; \
 					while :; do \
 						case $$i in \
-							1) dots="8" ;; \
-							2) dots="8==" ;; \
-							3) dots="8===" ;; \
-							4) dots="8====D💦" ; i=0 ;; \
+							1) dots="." ;; \
+							2) dots=".." ;; \
+							3) dots="..." ;; \
+							4) dots="...." ;; \
+							5) dots="....." ;; \
+							6) dots="......" ;; \
+							7) dots="......." ; i=0 ;; \
 						esac; \
 						printf "\rCompiling libft %s" "$$dots"; \
-						sleep 0.25; \
+						sleep 0.15; \
 						i=$$(expr $$i + 1); \
 					done & \
 					ANIM_PID=$$!; \
