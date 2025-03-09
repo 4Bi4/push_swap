@@ -6,7 +6,7 @@
 /*   By: labia-fe <labia-fe@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 16:15:58 by labia-fe          #+#    #+#             */
-/*   Updated: 2025/03/05 16:12:42 by labia-fe         ###   ########.fr       */
+/*   Updated: 2025/03/09 17:02:08 by labia-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ typedef struct s_stack
 	int				index;
 	int				value;
 
-	struct s_stack	*prev;
 	struct s_stack	*next;
 }					t_stack;
 

@@ -6,7 +6,7 @@
 /*   By: labia-fe <labia-fe@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 16:16:06 by labia-fe          #+#    #+#             */
-/*   Updated: 2025/03/05 16:13:03 by labia-fe         ###   ########.fr       */
+/*   Updated: 2025/03/09 17:02:19 by labia-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ t_stack	*create_node(int value)
 	node->index = -1;
 	node->value = value;
 	node->next = NULL;
-	node->prev = NULL;
 	return (node);
 }
 
@@ -42,7 +41,6 @@ void	link_node(t_stack **first, int value)
 		while (temp->next)
 			temp = temp->next;
 		temp->next = new_node;
-		new_node->prev = temp;
 	}
 }
 
@@ -102,15 +100,15 @@ int	main(int argc, char **argv)
 			write(1, "\n", 1);
 			indexer(stack_a);
 			print_list(stack_a);
-			//write(1, "\n ---------------- \n     SWAPPING\n ---------------- \n\n", 54);
-			//stack_a = swap(&stack_a);
-			//print_list(stack_a);
-			//write(1, "\n ----------------- \n    GET ROTATED\n ----------------- \n\n", 58);
-			//stack_a = rotate(&stack_a);
-			//print_list(stack_a);
-			//write(1, "\n ----------------- \n  GET REV_ROTATED\n ----------------- \n\n", 60);
-			//stack_a = rev_rotate(&stack_a);
-			//print_list(stack_a);
+			write(1, "\n ---------------- \n     SWAPPING\n ---------------- \n\n", 54);
+			stack_a = swap(&stack_a);
+			print_list(stack_a);
+			write(1, "\n ----------------- \n    GET ROTATED\n ----------------- \n\n", 58);
+			stack_a = rotate(&stack_a);
+			print_list(stack_a);
+			write(1, "\n ----------------- \n  GET REV_ROTATED\n ----------------- \n\n", 60);
+			stack_a = rev_rotate(&stack_a);
+			print_list(stack_a);
 			write(1, "\n ----------------- \n     PUSH TO B\n ----------------- \n\n", 57);
 			push(&stack_a, &stack_b);
 			write(1, "\n     [STACK A]\n\n", 17);

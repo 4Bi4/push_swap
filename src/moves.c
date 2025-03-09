@@ -6,7 +6,7 @@
 /*   By: labia-fe <labia-fe@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 16:32:25 by labia-fe          #+#    #+#             */
-/*   Updated: 2025/03/07 19:10:33 by labia-fe         ###   ########.fr       */
+/*   Updated: 2025/03/09 17:35:19 by labia-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,24 @@
 
 t_stack	*swap(t_stack **stack)
 {
-	t_stack *first;
 	t_stack	*swap;
+	t_stack *first;
 
-	if (!stack || !(*stack) || !(*stack)->next)
-		return (*stack);
 	first = *stack;
-	swap = first->next;
-	first->next = swap->next;
-	if (swap->next)
-		swap->next->prev = first;
-	swap->prev = NULL;
-	swap->next = first;
-	*stack = swap;
-	return (*stack);
+	if (first->next != NULL)
+	{
+		swap = first->next;
+		first->next = swap->next;
+		swap->next = first;
+		first = swap;
+	}
+	return (first);
 }
 
 t_stack	*rotate(t_stack **stack)
 {
-	t_stack	*first;
 	t_stack	*swap;
+	t_stack	*first;
 
 	first = *stack;
 	swap = first;
@@ -47,9 +45,9 @@ t_stack	*rotate(t_stack **stack)
 
 t_stack	*rev_rotate(t_stack	**stack)
 {
-	t_stack	*first;
 	t_stack	*swap;
 	t_stack	*temp;
+	t_stack	*first;
 
 	first = *stack;
 	swap = first;

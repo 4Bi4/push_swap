@@ -16,21 +16,24 @@ RM			=	rm -f
 all:		$(NAME)
 
 $(NAME):    $(OBJS)
+$(NAME):    $(OBJS)
 				@( \
 					i=1; \
 					while :; do \
 						case $$i in \
-							1) dots="." ;; \
-							2) dots=".." ;; \
-							3) dots="..."; i=0 ;; \
+							1) dots="8" ;; \
+							2) dots="8==" ;; \
+							3) dots="8===" ;; \
+							4) dots="8====D💦" ; i=0 ;; \
 						esac; \
-						printf "Compiling libft%s\r" "$$dots"; \
-						sleep 0.1; \
-						i=$$((i + 1)); \
+						printf "\rCompiling libft %s" "$$dots"; \
+						sleep 0.25; \
+						i=$$(expr $$i + 1); \
 					done & \
 					ANIM_PID=$$!; \
 					make -C $(LIBFT) -s; \
 					kill $$ANIM_PID; \
+					wait $$ANIM_PID 2>/dev/null; \
 					printf "\n"; \
 				)
 				@echo "Creating objects 🔨🪛"
@@ -50,6 +53,7 @@ clean:
 				@echo "Cleaning up... 🧹💨"
 
 fclean:			clean
+				@make -C $(LIBFT) fclean -s
 				@$(RM) $(NAME)
 				@$(RM) $(EXEC)
 				@$(RM) $(PROG_BAR_FILE)
