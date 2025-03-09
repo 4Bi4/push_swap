@@ -25,7 +25,7 @@ $(NAME):    $(OBJS)
 							3) dots="..."; i=0 ;; \
 						esac; \
 						printf "Compiling libft%s\r" "$$dots"; \
-						sleep 0.3; \
+						sleep 0.1; \
 						i=$$((i + 1)); \
 					done & \
 					ANIM_PID=$$!; \

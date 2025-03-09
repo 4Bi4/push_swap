@@ -14,24 +14,26 @@
 
 t_stack	*swap(t_stack **stack)
 {
-	t_stack	*swap;
 	t_stack *first;
+	t_stack	*swap;
 
+	if (!stack || !(*stack) || !(*stack)->next)
+		return (*stack);
 	first = *stack;
-	if (first->next != NULL)
-	{
-		swap = first->next;
-		first->next = swap->next;
-		swap->next = first;
-		first = swap;
-	}
-	return (first);
+	swap = first->next;
+	first->next = swap->next;
+	if (swap->next)
+		swap->next->prev = first;
+	swap->prev = NULL;
+	swap->next = first;
+	*stack = swap;
+	return (*stack);
 }
 
 t_stack	*rotate(t_stack **stack)
 {
-	t_stack	*swap;
 	t_stack	*first;
+	t_stack	*swap;
 
 	first = *stack;
 	swap = first;
@@ -45,9 +47,9 @@ t_stack	*rotate(t_stack **stack)
 
 t_stack	*rev_rotate(t_stack	**stack)
 {
+	t_stack	*first;
 	t_stack	*swap;
 	t_stack	*temp;
-	t_stack	*first;
 
 	first = *stack;
 	swap = first;
