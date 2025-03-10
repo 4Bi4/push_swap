@@ -6,7 +6,7 @@
 /*   By: labia-fe <labia-fe@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 16:32:25 by labia-fe          #+#    #+#             */
-/*   Updated: 2025/03/10 14:07:09 by labia-fe         ###   ########.fr       */
+/*   Updated: 2025/03/10 20:34:55 by labia-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	push(t_stack **src, t_stack **dst, char id)
 	t_stack	*first_dst;
 	t_stack	*swap;
 
+	if (!src || !*src)
+		return ;
 	first_src = *src;
 	first_dst = *dst;
 	swap = first_src;
@@ -35,6 +37,8 @@ t_stack	*swap(t_stack **stack, char id)
 	t_stack	*swap;
 	t_stack *first;
 
+	if (!stack || !*stack || !(*stack)->next)
+		return (*stack);
 	first = *stack;
 	if (first->next)
 	{
@@ -55,6 +59,8 @@ t_stack	*rotate(t_stack **stack, char id)
 	t_stack	*swap;
 	t_stack	*first;
 
+	if (!stack || !*stack || !(*stack)->next)
+		return (*stack);
 	first = *stack;
 	swap = first;
 	while (swap->next)
@@ -75,6 +81,8 @@ t_stack	*rev_rotate(t_stack	**stack, char id)
 	t_stack	*temp;
 	t_stack	*first;
 
+	if (!stack || !*stack || !(*stack)->next)
+		return (*stack);
 	first = *stack;
 	swap = first;
 	temp = first;

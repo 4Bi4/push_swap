@@ -6,7 +6,7 @@
 /*   By: labia-fe <labia-fe@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:51:14 by labia-fe          #+#    #+#             */
-/*   Updated: 2025/03/10 14:07:06 by labia-fe         ###   ########.fr       */
+/*   Updated: 2025/03/10 19:33:32 by labia-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,21 +44,20 @@ void	link_node(t_stack **first, int value)
 	}
 }
 
-void	free_matrix(char **mtrx)
-{
-	int i;
 
-	i = 0;
-	while (mtrx[i])
+void	free_list(t_stack **stack)
+{
+	t_stack	*tmp;
+
+	if (!stack || !*stack)
+		return ;
+	while (*stack)
 	{
-		free(mtrx[i]);
-		mtrx[i] = NULL;
-		i++;
+		tmp = *stack;
+		*stack = (*stack)->next;
+		free(tmp);
 	}
-	if (mtrx)
-		free(mtrx);
-	mtrx = NULL;
-	return ;
+	*stack = NULL;
 }
 
 int	list_size(t_stack *lst)

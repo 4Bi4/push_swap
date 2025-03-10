@@ -6,7 +6,7 @@
 /*   By: labia-fe <labia-fe@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 16:15:58 by labia-fe          #+#    #+#             */
-/*   Updated: 2025/03/10 14:20:45 by labia-fe         ###   ########.fr       */
+/*   Updated: 2025/03/10 20:10:36 by labia-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ typedef struct s_stack
 }					t_stack;
 
 //		[SORTING FUNCTIONS]
-t_stack	*sort_three(t_stack **stack);
+void	sort_three(t_stack **stack);
+void	sort_four(t_stack **stack_a, t_stack **stack_b);
+void	sort_five(t_stack **stack_a, t_stack **stack_b);
 
 //		[CHECKER FUNCTIONS]
 int		list_size(t_stack *lst);
@@ -46,10 +48,13 @@ void	free_matrix(char **mtrx);
 void 	free_list(t_stack **stack);
 char	**ft_split(char const *s, char c);
 
+void	print_list(t_stack *first);
+
 //		[MOVEMENT FUNCTIONS]
 t_stack	*swap(t_stack **stack, char id);
 t_stack	*rotate(t_stack **stack, char id);
 t_stack	*rev_rotate(t_stack	**stack, char id);
 void	push(t_stack **src, t_stack **dst, char id);
+
 
 #endif

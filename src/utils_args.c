@@ -6,25 +6,27 @@
 /*   By: labia-fe <labia-fe@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 14:59:36 by labia-fe          #+#    #+#             */
-/*   Updated: 2025/03/10 14:06:59 by labia-fe         ###   ########.fr       */
+/*   Updated: 2025/03/10 19:33:35 by labia-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	free_list(t_stack **stack)
+void	free_matrix(char **mtrx)
 {
-	t_stack	*tmp;
+	int i;
 
-	if (!stack || !*stack)
-		return ;
-	while (*stack)
+	i = 0;
+	while (mtrx[i])
 	{
-		tmp = *stack;
-		*stack = (*stack)->next;
-		free(tmp);
+		free(mtrx[i]);
+		mtrx[i] = NULL;
+		i++;
 	}
-	*stack = NULL;
+	if (mtrx)
+		free(mtrx);
+	mtrx = NULL;
+	return ;
 }
 
 void	indexer(t_stack *stack)

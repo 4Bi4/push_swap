@@ -6,7 +6,7 @@
 /*   By: labia-fe <labia-fe@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 16:16:06 by labia-fe          #+#    #+#             */
-/*   Updated: 2025/03/10 14:21:34 by labia-fe         ###   ########.fr       */
+/*   Updated: 2025/03/10 19:49:16 by labia-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ t_stack	*push_swap(t_stack *stack_a, t_stack *stack_b)
 		if (len == 2)
 			stack_a = swap(&stack_a, 'a');
 		else if (len == 3)
-			stack_a = sort_three(&stack_a);
-		//else if (len == 4)
-		//	sort_four(&stack_a, &stack_b);
-		//else if (len == 5)
-		//	sort_five_node(&stack_a, &stack_b);
+			sort_three(&stack_a);
+		else if (len == 4)
+			sort_four(&stack_a, &stack_b);
+		else if (len == 5)
+			sort_five(&stack_a, &stack_b);
 		//else
 		//	k_sort(&stack_a, &stack_b, len);
 	}
