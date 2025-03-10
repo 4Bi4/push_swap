@@ -4,7 +4,8 @@ NAME		=	push_swap
 INCLUDE		=	include
 SRCDIR		=	src/
 OBJDIR		=	objs/
-SRCS		=	$(SRCDIR)push_swap.c $(SRCDIR)utils_args.c $(SRCDIR)utils_aux.c $(SRCDIR)moves.c
+SRCS		=	$(SRCDIR)push_swap.c $(SRCDIR)utils_args.c $(SRCDIR)utils_aux.c $(SRCDIR)moves.c \
+				$(SRCDIR)utils_sort.c
 OBJS		=	$(SRCS:$(SRCDIR)%.c=$(OBJDIR)%.o)
 
 LIBFT		=	src/libft/

@@ -6,7 +6,7 @@
 /*   By: labia-fe <labia-fe@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 16:15:58 by labia-fe          #+#    #+#             */
-/*   Updated: 2025/03/09 17:02:08 by labia-fe         ###   ########.fr       */
+/*   Updated: 2025/03/10 14:20:45 by labia-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,29 @@ typedef struct s_stack
 	struct s_stack	*next;
 }					t_stack;
 
-int		ft_lstsize(t_stack *lst);
+//		[SORTING FUNCTIONS]
+t_stack	*sort_three(t_stack **stack);
+
+//		[CHECKER FUNCTIONS]
+int		list_size(t_stack *lst);
+int		is_sorted(t_stack **stack);
 int		dup_check(t_stack **stack);
 int		str_check(t_stack **stack, char *str);
 
-char	**ft_split(char const *s, char c);
+//		[CREATING FUNCTIONS]
+t_stack	*create_node(int value);
+void	link_node(t_stack **first, int value);
 
+//		[AUXILIARY FUNCTIONS]
 void	indexer(t_stack *stack);
 void	free_matrix(char **mtrx);
 void 	free_list(t_stack **stack);
-void	push(t_stack **src, t_stack **dst);
-void	link_node(t_stack **first, int value);
+char	**ft_split(char const *s, char c);
 
-t_stack	*swap(t_stack **stack);
-t_stack	*rotate(t_stack **stack);
-t_stack	*rev_rotate(t_stack	**stack);
+//		[MOVEMENT FUNCTIONS]
+t_stack	*swap(t_stack **stack, char id);
+t_stack	*rotate(t_stack **stack, char id);
+t_stack	*rev_rotate(t_stack	**stack, char id);
+void	push(t_stack **src, t_stack **dst, char id);
 
 #endif

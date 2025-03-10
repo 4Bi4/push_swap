@@ -6,7 +6,7 @@
 /*   By: labia-fe <labia-fe@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 14:59:36 by labia-fe          #+#    #+#             */
-/*   Updated: 2025/03/05 15:17:59 by labia-fe         ###   ########.fr       */
+/*   Updated: 2025/03/10 14:06:59 by labia-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	indexer(t_stack *stack)
 	t_stack	*lower;
 
 	i = 0;
-	max = ft_lstsize(stack);
+	max = list_size(stack);
 	first = stack;
 	lower = stack;
 	while (i < max)

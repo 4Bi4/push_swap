@@ -6,58 +6,11 @@
 /*   By: labia-fe <labia-fe@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 16:16:06 by labia-fe          #+#    #+#             */
-/*   Updated: 2025/03/09 17:02:19 by labia-fe         ###   ########.fr       */
+/*   Updated: 2025/03/10 14:21:34 by labia-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
-t_stack	*create_node(int value)
-{
-	t_stack	*node;
-
-	node = (t_stack *)malloc(sizeof(t_stack));
-	if (!node)
-		return (write(2, "Error\n", 7), NULL);
-	node->index = -1;
-	node->value = value;
-	node->next = NULL;
-	return (node);
-}
-
-void	link_node(t_stack **first, int value)
-{
-	t_stack	*new_node;
-	t_stack	*temp;
-
-	new_node = create_node(value);
-	if (!new_node)
-		return ;
-	if (!*first)
-		*first = new_node;
-	else
-	{
-		temp = *first;
-		while (temp->next)
-			temp = temp->next;
-		temp->next = new_node;
-	}
-}
-
-int		is_sorted(t_stack **stack)
-{
-	t_stack	*temp;
-
-	temp = *stack;
-	while (temp && temp->next)
-	{
-		if (temp->index < temp->next->index)
-			temp = temp->next;
-		else
-			return (1);
-	}
-	return (0);
-}
 
 void	print_list(t_stack *first)
 {
@@ -74,6 +27,28 @@ void	print_list(t_stack *first)
 		printf("index: %d, value: %d\n", temp->index, temp->value);
 		temp = temp->next;
 	}
+}
+
+t_stack	*push_swap(t_stack *stack_a, t_stack *stack_b)
+{
+	int	len;
+
+	(void)stack_b;
+	len = list_size(stack_a);
+	if (is_sorted(&stack_a) != 0)
+	{
+		if (len == 2)
+			stack_a = swap(&stack_a, 'a');
+		else if (len == 3)
+			stack_a = sort_three(&stack_a);
+		//else if (len == 4)
+		//	sort_four(&stack_a, &stack_b);
+		//else if (len == 5)
+		//	sort_five_node(&stack_a, &stack_b);
+		//else
+		//	k_sort(&stack_a, &stack_b, len);
+	}
+	return (stack_a);
 }
 
 int	main(int argc, char **argv)
@@ -97,34 +72,11 @@ int	main(int argc, char **argv)
 		}
 		if (dup_check(&stack_a) == 0)
 		{
-			write(1, "\n", 1);
 			indexer(stack_a);
 			print_list(stack_a);
-			write(1, "\n ---------------- \n     SWAPPING\n ---------------- \n\n", 54);
-			stack_a = swap(&stack_a);
+			stack_a = push_swap(stack_a, stack_b);
 			print_list(stack_a);
-			write(1, "\n ----------------- \n    GET ROTATED\n ----------------- \n\n", 58);
-			stack_a = rotate(&stack_a);
-			print_list(stack_a);
-			write(1, "\n ----------------- \n  GET REV_ROTATED\n ----------------- \n\n", 60);
-			stack_a = rev_rotate(&stack_a);
-			print_list(stack_a);
-			write(1, "\n ----------------- \n     PUSH TO B\n ----------------- \n\n", 57);
-			push(&stack_a, &stack_b);
-			write(1, "\n     [STACK A]\n\n", 17);
-			print_list(stack_a);
-			write(1, "\n     [STACK B]\n\n", 17);
-			print_list(stack_b);
-			write(1, "\n\n ----------------- \n     PUSH TO A\n ----------------- \n\n", 58);
-			push(&stack_b, &stack_a);
-			write(1, "\n     [STACK A]\n\n", 17);
-			print_list(stack_a);
-			write(1, "\n     [STACK B]\n\n", 17);
-			print_list(stack_b);
-			write(1, "\n", 1);
 		}
-		free_list(&stack_a);
-		free_list(&stack_b);
 	}
-	return (0);
+	return (free_list(&stack_a), free_list(&stack_b), 0);
 }
