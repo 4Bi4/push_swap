@@ -5,7 +5,7 @@ INCLUDE		=	include
 SRCDIR		=	src/
 OBJDIR		=	objs/
 SRCS		=	$(SRCDIR)push_swap.c $(SRCDIR)utils_args.c $(SRCDIR)utils_aux.c $(SRCDIR)moves.c \
-				$(SRCDIR)utils_sort.c
+				$(SRCDIR)utils_sort.c $(SRCDIR)k_sort.c
 OBJS		=	$(SRCS:$(SRCDIR)%.c=$(OBJDIR)%.o)
 
 LIBFT		=	src/libft/
