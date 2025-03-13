@@ -6,7 +6,7 @@
 /*   By: labia-fe <labia-fe@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 16:15:58 by labia-fe          #+#    #+#             */
-/*   Updated: 2025/03/12 18:18:10 by labia-fe         ###   ########.fr       */
+/*   Updated: 2025/03/13 17:01:26 by labia-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	link_node(t_stack **first, int value);
 //		[AUXILIARY FUNCTIONS]
 void	indexer(t_stack *stack);
 void	free_matrix(char **mtrx);
-void 	free_list(t_stack **stack);
+void	free_list(t_stack **stack);
 char	**ft_split(char const *s, char c);
 
 void	print_list(t_stack *first);
@@ -58,6 +58,5 @@ t_stack	*swap(t_stack **stack, char id);
 t_stack	*rotate(t_stack **stack, char id);
 t_stack	*rev_rotate(t_stack	**stack, char id);
 void	push(t_stack **src, t_stack **dst, char id);
-
 
 #endif

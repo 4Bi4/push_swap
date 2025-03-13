@@ -6,28 +6,11 @@
 /*   By: labia-fe <labia-fe@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 16:16:06 by labia-fe          #+#    #+#             */
-/*   Updated: 2025/03/12 19:58:40 by labia-fe         ###   ########.fr       */
+/*   Updated: 2025/03/13 17:05:32 by labia-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
-void	print_list(t_stack *first)
-{
-	t_stack	*temp;
-
-	if (!first)
-	{
-		write(1, "(null)\n", 8);
-		return ;
-	}
-		temp = first;
-	while (temp)
-	{
-		printf("index: %d, value: %d\n", temp->index, temp->value);
-		temp = temp->next;
-	}
-}
 
 t_stack	*push_swap(t_stack *stack_a, t_stack *stack_b)
 {
@@ -72,9 +55,7 @@ int	main(int argc, char **argv)
 		if (dup_check(&stack_a) == 0)
 		{
 			indexer(stack_a);
-			// print_list(stack_a);
 			stack_a = push_swap(stack_a, stack_b);
-			// print_list(stack_a);
 		}
 	}
 	return (free_list(&stack_a), free_list(&stack_b), 0);

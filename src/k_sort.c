@@ -6,16 +6,16 @@
 /*   By: labia-fe <labia-fe@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 17:00:10 by labia-fe          #+#    #+#             */
-/*   Updated: 2025/03/12 19:58:20 by labia-fe         ###   ########.fr       */
+/*   Updated: 2025/03/13 17:02:04 by labia-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int		ft_sqrroot(int n)
+int	ft_sqrroot(int n)
 {
 	int	i;
-	
+
 	i = 0;
 	if (n == 0)
 		return (0);
@@ -26,16 +26,16 @@ int		ft_sqrroot(int n)
 	return (i - 1);
 }
 
+//		range = sqrroot of total size + 40% of it
 void	first_sort(t_stack **stack_a, t_stack **stack_b)
 {
 	int	i;
 	int	range;
 
 	i = 0;
-	range = (ft_sqrroot(list_size(*stack_a)) * 1.4);	// range = sqrroot of total size + 40% of it
+	range = (ft_sqrroot(list_size(*stack_a)) * 1.4);
 	while (*stack_a)
 	{
-		
 		if ((*stack_a)->index <= i)
 		{
 			push(stack_a, stack_b, 'b');
@@ -69,12 +69,12 @@ void	second_sort(t_stack **stack_a, t_stack **stack_b)
 		position = check_position(stack_b, biggest->index);
 		if (position <= size / 2)
 		{
-			while((*stack_b)->index != biggest->index)
+			while ((*stack_b)->index != biggest->index)
 				*stack_b = rotate(stack_b, 'b');
 		}
 		else
 		{
-			while((*stack_b)->index != biggest->index)
+			while ((*stack_b)->index != biggest->index)
 				*stack_b = rev_rotate(stack_b, 'b');
 		}
 		push(stack_b, stack_a, 'a');

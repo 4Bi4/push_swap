@@ -6,7 +6,7 @@
 /*   By: labia-fe <labia-fe@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 16:32:25 by labia-fe          #+#    #+#             */
-/*   Updated: 2025/03/10 20:34:55 by labia-fe         ###   ########.fr       */
+/*   Updated: 2025/03/13 17:08:16 by labia-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ void	push(t_stack **src, t_stack **dst, char id)
 
 t_stack	*swap(t_stack **stack, char id)
 {
+	t_stack	*first;
 	t_stack	*swap;
-	t_stack *first;
 
 	if (!stack || !*stack || !(*stack)->next)
 		return (*stack);

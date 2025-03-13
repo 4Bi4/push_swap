@@ -6,7 +6,7 @@
 /*   By: labia-fe <labia-fe@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 14:59:36 by labia-fe          #+#    #+#             */
-/*   Updated: 2025/03/12 20:13:06 by labia-fe         ###   ########.fr       */
+/*   Updated: 2025/03/13 17:09:11 by labia-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	free_matrix(char **mtrx)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (mtrx[i])
@@ -31,7 +31,7 @@ void	free_matrix(char **mtrx)
 
 void	indexer(t_stack *stack)
 {
-	int 	i;
+	int		i;
 	int		max;
 	t_stack	*first;
 	t_stack	*lower;
@@ -60,8 +60,8 @@ void	indexer(t_stack *stack)
 
 int	arg_loader(t_stack **stack, char *str, int split)
 {
-	char		**args;
-	int			i;
+	char	**args;
+	int		i;
 
 	i = 0;
 	if (split == 1)
@@ -101,7 +101,10 @@ int	str_check(t_stack **stack, char *str)
 		if (!ft_isdigit(str[i]) && str[i] != ' ' && str[i] != '+'
 			&& str[i] != '-')
 			return (write(2, "Error\n", 7), 1);
-		if ((str[i] == '+' && !ft_isdigit(str[i + 1])) || (str[i] == '-' && !ft_isdigit(str[i + 1])))
+		if ((str[i] == '+' && !ft_isdigit(str[i + 1])) || (str[i] == '-'
+				&& !ft_isdigit(str[i + 1])) || (i != 0 && str[i] == '-'
+				&& str[i - 1] != ' ') || (i != 0 && str[i] == '+' && str[i
+					- 1] != ' '))
 			return (write(2, "Error\n", 7), 1);
 		i++;
 	}
@@ -109,8 +112,6 @@ int	str_check(t_stack **stack, char *str)
 		return (write(2, "Error\n", 7), 1);
 	return (0);
 }
-
-//  || !ft_strchr(ft_strchr(str,'-'),'-')))
 
 int	dup_check(t_stack **stack)
 {
