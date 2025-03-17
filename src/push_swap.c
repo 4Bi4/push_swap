@@ -6,7 +6,7 @@
 /*   By: labia-fe <labia-fe@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 16:16:06 by labia-fe          #+#    #+#             */
-/*   Updated: 2025/03/13 17:05:32 by labia-fe         ###   ########.fr       */
+/*   Updated: 2025/03/13 18:11:27 by labia-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	main(int argc, char **argv)
 		while (i < argc)
 		{
 			if (str_check(&stack_a, argv[i]) != 0)
-				return (1);
+				return (free_list(&stack_a), free_list(&stack_b), 1);
 			i++;
 		}
 		if (dup_check(&stack_a) == 0)
