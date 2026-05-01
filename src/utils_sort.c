@@ -93,8 +93,8 @@ void	sort_five(t_stack **stack_a, t_stack **stack_b)
 				else
 					*stack_a = rev_rotate(stack_a, 'a');
 			}
-			push(stack_a, stack_b, 'b');
 		}
+		push(stack_a, stack_b, 'b');
 		target++;
 	}
 	if (is_sorted(stack_a) != 0)
