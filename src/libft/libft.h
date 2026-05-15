@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 
 int			ft_isalpha(int c);
 int			ft_isdigit(int c);
@@ -30,6 +31,7 @@ int			ft_strncmp(const char *s1, const char *s2, size_t n);
 long int	ft_atol(const char *c);
 
 char		*ft_itoa(int n);
+char		*get_next_line(int fd);
 char		*ft_strdup(const char *s);
 char		*ft_strchr(const char *s, int c);
 char		*ft_strrchr(const char *s, int c);

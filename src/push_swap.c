@@ -12,6 +12,16 @@
 
 #include "../include/push_swap.h"
 
+void	print_list(t_stack *stack)
+{
+	while (stack)
+	{
+		printf("%d ", stack->value);
+		stack = stack->next;
+	}
+	printf("\n");
+}
+
 t_stack	*push_swap(t_stack *stack_a, t_stack *stack_b)
 {
 	int	len;
@@ -20,7 +30,7 @@ t_stack	*push_swap(t_stack *stack_a, t_stack *stack_b)
 	if (is_sorted(&stack_a) != 0)
 	{
 		if (len == 2)
-			stack_a = swap(&stack_a, 'a');
+			stack_a = swap(&stack_a, 'a', 1);
 		else if (len == 3)
 			sort_three(&stack_a);
 		else if (len == 4)
@@ -42,7 +52,7 @@ int	main(int argc, char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc < 2)
-		return (write(2, "Error\n", 7), 1);
+		return (1);
 	if (argc >= 2)
 	{
 		i = 1;

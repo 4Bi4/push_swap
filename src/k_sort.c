@@ -38,17 +38,17 @@ void	first_sort(t_stack **stack_a, t_stack **stack_b)
 	{
 		if ((*stack_a)->index <= i)
 		{
-			push(stack_a, stack_b, 'b');
-			*stack_b = rotate(stack_b, 'b');
+			push(stack_a, stack_b, 'b', 1);
+			*stack_b = rotate(stack_b, 'b', 1);
 			i++;
 		}
 		else if ((*stack_a)->index > i && (*stack_a)->index <= (i + range))
 		{
-			push(stack_a, stack_b, 'b');
+			push(stack_a, stack_b, 'b', 1);
 			i++;
 		}
 		else
-			*stack_a = rotate(stack_a, 'a');
+			*stack_a = rotate(stack_a, 'a', 1);
 	}
 	return ;
 }
@@ -70,14 +70,14 @@ void	second_sort(t_stack **stack_a, t_stack **stack_b)
 		if (position <= size / 2)
 		{
 			while ((*stack_b)->index != biggest->index)
-				*stack_b = rotate(stack_b, 'b');
+				*stack_b = rotate(stack_b, 'b', 1);
 		}
 		else
 		{
 			while ((*stack_b)->index != biggest->index)
-				*stack_b = rev_rotate(stack_b, 'b');
+				*stack_b = rev_rotate(stack_b, 'b', 1);
 		}
-		push(stack_b, stack_a, 'a');
+		push(stack_b, stack_a, 'a', 1);
 	}
 	return ;
 }

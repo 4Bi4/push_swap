@@ -10,33 +10,48 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-long int	ft_atol(const char *c)
+#include "libft.h"
+
+static long int	parse_digits(const char *c, int start, int sign)
 {
 	long int	a;
-	long int	i;
-	int			sign;
+	long int	digit;
+	int			i;
 
-	i = 0;
 	a = 0;
-	sign = 1;
-	while ((c[i] >= 9 && c[i] <= 13) || c[i] == ' ')
-	{
-		i++;
-	}
-	if (c[i] == '-' || c[i] == '+')
-	{
-		if (c[i] == '-')
-		{
-			sign = -sign;
-		}
-		i++;
-	}
+	i = start;
 	while (c[i] >= '0' && c[i] <= '9')
 	{
-		a = a * 10 + (c[i] - '0');
+		digit = c[i] - '0';
+		if (a > LLONG_MAX / 10 || (a == LLONG_MAX / 10 && digit > 7))
+		{
+			if (sign == 1)
+				return (LLONG_MAX);
+			else
+				return (LLONG_MIN);
+		}
+		a = a * 10 + digit;
 		i++;
 	}
 	return (a * sign);
+}
+
+long int	ft_atol(const char *c)
+{
+	int	i;
+	int	sign;
+
+	i = 0;
+	sign = 1;
+	while ((c[i] >= 9 && c[i] <= 13) || c[i] == ' ')
+		i++;
+	if (c[i] == '-' || c[i] == '+')
+	{
+		if (c[i] == '-')
+			sign = -1;
+		i++;
+	}
+	return (parse_digits(c, i, sign));
 }
 
 /*

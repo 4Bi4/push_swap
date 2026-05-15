@@ -16,6 +16,8 @@ void	free_matrix(char **mtrx)
 {
 	int	i;
 
+	if (!mtrx)
+		return ;
 	i = 0;
 	while (mtrx[i])
 	{
@@ -94,6 +96,8 @@ int	str_check(t_stack **stack, char *str)
 
 	i = 0;
 	split = 0;
+	if (!str || str[0] == '\0')
+		return (write(2, "Error\n", 7), 1);
 	while (str[i])
 	{
 		if (str[i] == ' ')

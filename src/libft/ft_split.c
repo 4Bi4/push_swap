@@ -16,6 +16,8 @@ void	ft_freeall(char **s)
 {
 	int	i;
 
+	if (!s)
+		return ;
 	i = 0;
 	while (s[i])
 	{
@@ -68,6 +70,8 @@ char	**ft_split(char const *s, char c)
 	int		i;
 	int		j;
 
+	if (ft_nword(s, c) < 1)
+		return (NULL);
 	i = 0;
 	j = 0;
 	str = malloc(sizeof(char *) * (ft_nword(s, c) + 1));

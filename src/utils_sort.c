@@ -49,11 +49,11 @@ void	sort_three(t_stack **stack)
 
 	biggest = biggest_node(stack);
 	if (biggest == *stack)
-		*stack = rotate(stack, 'a');
+		*stack = rotate(stack, 'a', 1);
 	else if ((*stack)->next == biggest)
-		*stack = rev_rotate(stack, 'a');
+		*stack = rev_rotate(stack, 'a', 1);
 	if ((*stack)->index > (*stack)->next->index)
-		*stack = swap(stack, 'a');
+		*stack = swap(stack, 'a', 1);
 }
 
 void	sort_four(t_stack **stack_a, t_stack **stack_b)
@@ -63,18 +63,16 @@ void	sort_four(t_stack **stack_a, t_stack **stack_b)
 		if ((*stack_a)->index != 0)
 		{
 			if (check_position(stack_a, 0) <= (list_size(*stack_a) / 2))
-				*stack_a = rotate(stack_a, 'a');
+				*stack_a = rotate(stack_a, 'a', 1);
 			else
-				*stack_a = rev_rotate(stack_a, 'a');
+				*stack_a = rev_rotate(stack_a, 'a', 1);
 		}
 		if ((*stack_a)->index == 0)
-			push(stack_a, stack_b, 'b');
+			push(stack_a, stack_b, 'b', 1);
 	}
 	if (is_sorted(stack_a) != 0)
-	{
 		sort_three(stack_a);
-	}
-	push(stack_b, stack_a, 'a');
+	push(stack_b, stack_a, 'a', 1);
 }
 
 void	sort_five(t_stack **stack_a, t_stack **stack_b)
@@ -89,18 +87,18 @@ void	sort_five(t_stack **stack_a, t_stack **stack_b)
 			while ((*stack_a)->index != target)
 			{
 				if (check_position(stack_a, target) <= list_size(*stack_a) / 2)
-					*stack_a = rotate(stack_a, 'a');
+					*stack_a = rotate(stack_a, 'a', 1);
 				else
-					*stack_a = rev_rotate(stack_a, 'a');
+					*stack_a = rev_rotate(stack_a, 'a', 1);
 			}
 		}
-		push(stack_a, stack_b, 'b');
+		push(stack_a, stack_b, 'b', 1);
 		target++;
 	}
 	if (is_sorted(stack_a) != 0)
 		sort_three(stack_a);
 	if ((*stack_b)->next && (*stack_b)->index < (*stack_b)->next->index)
-		*stack_b = swap(stack_b, 'b');
-	push(stack_b, stack_a, 'a');
-	push(stack_b, stack_a, 'a');
+		*stack_b = swap(stack_b, 'b', 1);
+	push(stack_b, stack_a, 'a', 1);
+	push(stack_b, stack_a, 'a', 1);
 }

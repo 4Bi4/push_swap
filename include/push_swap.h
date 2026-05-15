@@ -54,9 +54,9 @@ char	**ft_split(char const *s, char c);
 void	print_list(t_stack *first);
 
 //		[MOVEMENT FUNCTIONS]
-t_stack	*swap(t_stack **stack, char id);
-t_stack	*rotate(t_stack **stack, char id);
-t_stack	*rev_rotate(t_stack	**stack, char id);
-void	push(t_stack **src, t_stack **dst, char id);
+t_stack	*swap(t_stack **stack, char id, int print);
+t_stack	*rotate(t_stack **stack, char id, int print);
+t_stack	*rev_rotate(t_stack	**stack, char id, int print);
+void	push(t_stack **src, t_stack **dst, char id, int print);
 
 #endif

@@ -12,7 +12,7 @@
 
 #include "../include/push_swap.h"
 
-void	push(t_stack **src, t_stack **dst, char id)
+void	push(t_stack **src, t_stack **dst, char id, int print)
 {
 	t_stack	*first_src;
 	t_stack	*first_dst;
@@ -26,13 +26,16 @@ void	push(t_stack **src, t_stack **dst, char id)
 	*src = first_src->next;
 	swap->next = first_dst;
 	*dst = swap;
-	if (id == 'a')
-		write(1, "pa\n", 3);
-	else
-		write(1, "pb\n", 3);
+	if (print)
+	{
+		if (id == 'a')
+			write(1, "pa\n", 3);
+		else
+			write(1, "pb\n", 3);
+	}
 }
 
-t_stack	*swap(t_stack **stack, char id)
+t_stack	*swap(t_stack **stack, char id, int print)
 {
 	t_stack	*first;
 	t_stack	*swap;
@@ -47,14 +50,17 @@ t_stack	*swap(t_stack **stack, char id)
 		swap->next = first;
 		first = swap;
 	}
-	if (id == 'a')
-		write(1, "sa\n", 3);
-	else
-		write(1, "sb\n", 3);
+	if (print)
+	{
+		if (id == 'a')
+			write(1, "sa\n", 3);
+		else
+			write(1, "sb\n", 3);
+	}
 	return (first);
 }
 
-t_stack	*rotate(t_stack **stack, char id)
+t_stack	*rotate(t_stack **stack, char id, int print)
 {
 	t_stack	*swap;
 	t_stack	*first;
@@ -68,14 +74,17 @@ t_stack	*rotate(t_stack **stack, char id)
 	swap->next = first;
 	swap = first->next;
 	first->next = NULL;
-	if (id == 'a')
-		write(1, "ra\n", 3);
-	else
-		write(1, "rb\n", 3);
+	if (print)
+	{
+		if (id == 'a')
+			write(1, "ra\n", 3);
+		else
+			write(1, "rb\n", 3);
+	}
 	return (swap);
 }
 
-t_stack	*rev_rotate(t_stack	**stack, char id)
+t_stack	*rev_rotate(t_stack	**stack, char id, int print)
 {
 	t_stack	*swap;
 	t_stack	*temp;
@@ -92,9 +101,12 @@ t_stack	*rev_rotate(t_stack	**stack, char id)
 		temp = temp->next;
 	swap->next = first;
 	temp->next = NULL;
-	if (id == 'a')
-		write(1, "rra\n", 4);
-	else
-		write(1, "rrb\n", 4);
+	if (print)
+	{
+		if (id == 'a')
+			write(1, "rra\n", 4);
+		else
+			write(1, "rrb\n", 4);
+	}
 	return (swap);
 }
