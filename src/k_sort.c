@@ -12,6 +12,9 @@
 
 #include "../include/push_swap.h"
 
+//	Calculates the integer square root of a number
+//	\returns
+//	the integer square root of n, -1 if n is negative
 int	ft_sqrroot(int n)
 {
 	int	i;
@@ -26,7 +29,9 @@ int	ft_sqrroot(int n)
 	return (i - 1);
 }
 
-//		range = sqrroot of total size + 40% of it
+//	First part of the k_sort algorithm, pushes the elements
+//	from stack A to stack B in chunks based on their index
+//	(range = sqrroot of total size + 40% of it)
 void	first_sort(t_stack **stack_a, t_stack **stack_b)
 {
 	int	i;
@@ -53,6 +58,8 @@ void	first_sort(t_stack **stack_a, t_stack **stack_b)
 	return ;
 }
 
+//	Second part of the k_sort algorithm, pushes the elements
+//	from stack B back to stack A in the correct order
 void	second_sort(t_stack **stack_a, t_stack **stack_b)
 {
 	int		position;
@@ -82,6 +89,8 @@ void	second_sort(t_stack **stack_a, t_stack **stack_b)
 	return ;
 }
 
+//	Main function for the k_sort algorithm
+//	sorts stack A using stack B as auxiliary
 void	k_sort(t_stack **stack_a, t_stack **stack_b)
 {
 	first_sort(stack_a, stack_b);

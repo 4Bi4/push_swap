@@ -12,6 +12,9 @@
 
 #include "../include/push_swap.h"
 
+//	Creates a new node with the given value
+//	\returns
+//	a pointer to the new node, NULL if error
 t_stack	*create_node(int value)
 {
 	t_stack	*node;
@@ -25,6 +28,7 @@ t_stack	*create_node(int value)
 	return (node);
 }
 
+//	Links a new node with the given value to the end of the list
 void	link_node(t_stack **first, int value)
 {
 	t_stack	*new_node;
@@ -44,6 +48,7 @@ void	link_node(t_stack **first, int value)
 	}
 }
 
+//	Frees the entire list (stack) and sets the pointer to NULL
 void	free_list(t_stack **stack)
 {
 	t_stack	*tmp;
@@ -59,6 +64,9 @@ void	free_list(t_stack **stack)
 	*stack = NULL;
 }
 
+//	Calculates the size of the list (stack)
+//	\returns
+//	the size of the list, 0 if the list is empty
 int	list_size(t_stack *lst)
 {
 	int	i;
@@ -74,6 +82,9 @@ int	list_size(t_stack *lst)
 	return (i);
 }
 
+//	Checks if the stack is sorted in ascending order based on index
+//	\returns
+//	1 if sorted, 0 if not
 int	is_sorted(t_stack **stack)
 {
 	t_stack	*temp;
@@ -84,7 +95,7 @@ int	is_sorted(t_stack **stack)
 		if (temp->index < temp->next->index)
 			temp = temp->next;
 		else
-			return (1);
+			return (0);
 	}
-	return (0);
+	return (1);
 }

@@ -28,12 +28,14 @@ typedef struct s_stack
 }					t_stack;
 
 //		[SORTING FUNCTIONS]
+
 void	sort_three(t_stack **stack);
 void	k_sort(t_stack **stack_a, t_stack **stack_b);
 void	sort_four(t_stack **stack_a, t_stack **stack_b);
 void	sort_five(t_stack **stack_a, t_stack **stack_b);
 
 //		[CHECKER FUNCTIONS]
+
 int		list_size(t_stack *lst);
 int		is_sorted(t_stack **stack);
 int		dup_check(t_stack **stack);
@@ -42,10 +44,12 @@ int		str_check(t_stack **stack, char *str);
 int		check_position(t_stack **stack, int index);
 
 //		[CREATING FUNCTIONS]
+
 t_stack	*create_node(int value);
 void	link_node(t_stack **first, int value);
 
 //		[AUXILIARY FUNCTIONS]
+
 void	indexer(t_stack *stack);
 void	free_matrix(char **mtrx);
 void	free_list(t_stack **stack);
@@ -54,6 +58,7 @@ char	**ft_split(char const *s, char c);
 void	print_list(t_stack *first);
 
 //		[MOVEMENT FUNCTIONS]
+
 t_stack	*swap(t_stack **stack, char id, int print);
 t_stack	*rotate(t_stack **stack, char id, int print);
 t_stack	*rev_rotate(t_stack	**stack, char id, int print);

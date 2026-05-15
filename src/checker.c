@@ -1,9 +1,9 @@
 #include "checker.h"
 
-//	loads Stack A with the revieced args
+//	Loads Stack A with the revieced args
 //	\returns
 //	1 if ok, 0 if error
-int	load_stack(t_stack **stack_a, char **argv, int argc)
+static int	load_stack(t_stack **stack_a, char **argv, int argc)
 {
 	int	i;
 
@@ -17,28 +17,11 @@ int	load_stack(t_stack **stack_a, char **argv, int argc)
 	return (0);
 }
 
-int	apply_moves(t_stack **stack_a, t_stack **stack_b, char **moves)
-{
-	int	i;
-
-	i = 0;
-	while (moves[i])
-	{
-		if (move_check(stack_a, stack_b, moves[i]) != 0)
-		{
-			write(2, "Error\n", 7);
-			return (1);
-		}
-		i++;
-	}
-	return (0);
-}
-
-//	reads the moves from stdin and stores them
+//	Reads the moves from stdin and stores them
 //	in an array of strings
 //	\returns
 //	the array of moves, NULL if error
-char	**read_moves(void)
+static char	**read_moves(void)
 {
 	char	**moves;
 	char	*line;
@@ -59,6 +42,27 @@ char	**read_moves(void)
 	return (moves);
 }
 
+//	Replays the given move list onto the stacks
+//	\returns
+//	0 if ok, 1 if error
+static int	apply_moves(t_stack **stack_a, t_stack **stack_b, char **moves)
+{
+	int	i;
+
+	i = 0;
+	while (moves[i])
+	{
+		if (move_check(stack_a, stack_b, moves[i]) != 0)
+		{
+			write(2, "Error\n", 7);
+			return (1);
+		}
+		i++;
+	}
+	return (0);
+}
+
+//	Main function for the checker program
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
@@ -73,9 +77,11 @@ int	main(int argc, char **argv)
 		return (free_list(&stack_a), free_list(&stack_b), 1);
 	if (dup_check(&stack_a) != 0)
 		return (free_list(&stack_a), free_list(&stack_b), 1);
+	indexer(stack_a);
 	moves = read_moves();
 	if (!moves)
-		return (write(2, "Error\n", 7), free_list(&stack_a), free_list(&stack_b), 1);
+		return (write(2, "Error\n", 7),
+			free_list(&stack_a), free_list(&stack_b), 1);
 	if (apply_moves(&stack_a, &stack_b, moves) != 0)
 		return (free_list(&stack_a), free_list(&stack_b), 1);
 	if (is_sorted(&stack_a) && !stack_b)

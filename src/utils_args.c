@@ -12,6 +12,7 @@
 
 #include "../include/push_swap.h"
 
+//	Frees a matrix of strings
 void	free_matrix(char **mtrx)
 {
 	int	i;
@@ -31,6 +32,8 @@ void	free_matrix(char **mtrx)
 	return ;
 }
 
+//	Indexes the stack by value, the lowest value gets index 0
+//	and the highest value gets index (size - 1)
 void	indexer(t_stack *stack)
 {
 	int		i;
@@ -60,6 +63,9 @@ void	indexer(t_stack *stack)
 	return ;
 }
 
+//	Loads the given string into the stack, splitting it if necessary
+//	\returns
+//	0 if ok, 1 if error
 int	arg_loader(t_stack **stack, char *str, int split)
 {
 	char	**args;
@@ -89,6 +95,10 @@ int	arg_loader(t_stack **stack, char *str, int split)
 	return (0);
 }
 
+//	Checks if the given string is a valid number or a list of valid numbers
+//	and loads it into the stack
+//	\returns
+//	0 if ok, 1 if error
 int	str_check(t_stack **stack, char *str)
 {
 	int	i;
@@ -117,6 +127,9 @@ int	str_check(t_stack **stack, char *str)
 	return (0);
 }
 
+//	Checks if the are duplicate numbers on a loaded stack
+//	\returns
+//	0 if no dups, 1 if dups found
 int	dup_check(t_stack **stack)
 {
 	t_stack	*current;

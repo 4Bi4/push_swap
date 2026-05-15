@@ -12,6 +12,9 @@
 
 #include "../include/push_swap.h"
 
+//	Returns the position of the node with the given index in the stack
+//	\returns
+//	the position (int) if found, -1 if not found
 int	check_position(t_stack **stack, int index)
 {
 	int		i;
@@ -27,6 +30,9 @@ int	check_position(t_stack **stack, int index)
 	return (i);
 }
 
+//	Returns a pointer to the node with the biggest index in the stack
+//	\returns
+//	a pointer to the node with the biggest index, NULL if stack is empty
 t_stack	*biggest_node(t_stack **stack)
 {
 	t_stack	*biggest;
@@ -43,6 +49,7 @@ t_stack	*biggest_node(t_stack **stack)
 	return (biggest);
 }
 
+//	Sorts a stack of three elements
 void	sort_three(t_stack **stack)
 {
 	t_stack	*biggest;
@@ -56,6 +63,7 @@ void	sort_three(t_stack **stack)
 		*stack = swap(stack, 'a', 1);
 }
 
+//	Sorts a stack of four elements
 void	sort_four(t_stack **stack_a, t_stack **stack_b)
 {
 	while (list_size(*stack_a) > 3)
@@ -70,11 +78,12 @@ void	sort_four(t_stack **stack_a, t_stack **stack_b)
 		if ((*stack_a)->index == 0)
 			push(stack_a, stack_b, 'b', 1);
 	}
-	if (is_sorted(stack_a) != 0)
+	if (!is_sorted(stack_a))
 		sort_three(stack_a);
 	push(stack_b, stack_a, 'a', 1);
 }
 
+//	Sorts a stack of five elements
 void	sort_five(t_stack **stack_a, t_stack **stack_b)
 {
 	int	target;
@@ -95,7 +104,7 @@ void	sort_five(t_stack **stack_a, t_stack **stack_b)
 		push(stack_a, stack_b, 'b', 1);
 		target++;
 	}
-	if (is_sorted(stack_a) != 0)
+	if (!is_sorted(stack_a))
 		sort_three(stack_a);
 	if ((*stack_b)->next && (*stack_b)->index < (*stack_b)->next->index)
 		*stack_b = swap(stack_b, 'b', 1);

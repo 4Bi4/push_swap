@@ -12,6 +12,8 @@
 
 #include "../include/push_swap.h"
 
+//	Auxiliary function for debugging
+//	prints the stack values
 void	print_list(t_stack *stack)
 {
 	while (stack)
@@ -22,12 +24,16 @@ void	print_list(t_stack *stack)
 	printf("\n");
 }
 
-t_stack	*push_swap(t_stack *stack_a, t_stack *stack_b)
+//	Main sorting function, applies the appropriate algorithm
+//	based on the size of the stack
+//	\returns
+//	the sorted stack (t_stack *) if ok, NULL if error
+static t_stack	*push_swap(t_stack *stack_a, t_stack *stack_b)
 {
 	int	len;
 
 	len = list_size(stack_a);
-	if (is_sorted(&stack_a) != 0)
+	if (!is_sorted(&stack_a))
 	{
 		if (len == 2)
 			stack_a = swap(&stack_a, 'a', 1);
@@ -43,6 +49,7 @@ t_stack	*push_swap(t_stack *stack_a, t_stack *stack_b)
 	return (stack_a);
 }
 
+//	Main function for the sorter program
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;

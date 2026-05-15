@@ -12,6 +12,7 @@
 
 #include "../include/push_swap.h"
 
+//	Pushes the top element of src stack to dst stack
 void	push(t_stack **src, t_stack **dst, char id, int print)
 {
 	t_stack	*first_src;
@@ -35,6 +36,9 @@ void	push(t_stack **src, t_stack **dst, char id, int print)
 	}
 }
 
+//	Swaps the first two elements of the stack
+//	\returns
+//	a pointer to the new first element of the stack
 t_stack	*swap(t_stack **stack, char id, int print)
 {
 	t_stack	*first;
@@ -60,6 +64,9 @@ t_stack	*swap(t_stack **stack, char id, int print)
 	return (first);
 }
 
+//	Rotates the stack by moving the first element to the last position
+//	\returns
+//	a pointer to the new first element of the stack
 t_stack	*rotate(t_stack **stack, char id, int print)
 {
 	t_stack	*swap;
@@ -84,6 +91,9 @@ t_stack	*rotate(t_stack **stack, char id, int print)
 	return (swap);
 }
 
+//	Reverse rotates the stack by moving the last element to the first position
+//	\returns
+//	a pointer to the new first element of the stack
 t_stack	*rev_rotate(t_stack	**stack, char id, int print)
 {
 	t_stack	*swap;

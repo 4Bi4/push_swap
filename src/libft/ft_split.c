@@ -70,7 +70,7 @@ char	**ft_split(char const *s, char c)
 	int		i;
 	int		j;
 
-	if (ft_nword(s, c) < 1)
+	if (ft_nword(s, c) <= 0)
 		return (NULL);
 	i = 0;
 	j = 0;
@@ -90,8 +90,7 @@ char	**ft_split(char const *s, char c)
 		else
 			i++;
 	}
-	str[j] = NULL;
-	return (str);
+	return (str[j] = NULL, str);
 }
 
 /*
