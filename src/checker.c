@@ -12,6 +12,18 @@
 
 #include "checker.h"
 
+//	Frees all the allocated memory for both stacks and the moves matrix
+//	If NULL is passed that parameter is ignored
+void	free_all(t_stack **stack_a, t_stack **stack_b, char **moves)
+{
+	if (moves)
+		free_matrix(moves);
+	if (stack_a)
+		free_list(stack_a);
+	if (stack_b)
+		free_list(stack_b);
+}
+
 //	Loads Stack A with the revieced args
 //	\returns
 //	1 if ok, 0 if error
@@ -86,20 +98,19 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (1);
 	if (load_stack(&stack_a, argv, argc) != 0)
-		return (free_list(&stack_a), free_list(&stack_b), 1);
+		return (free_all(&stack_a, &stack_b, NULL), 1);
 	if (dup_check(&stack_a) != 0)
-		return (free_list(&stack_a), free_list(&stack_b), 1);
+		return (free_all(&stack_a, &stack_b, NULL), 1);
 	indexer(stack_a);
 	moves = read_moves();
 	if (!moves)
 		return (write(2, "Error\n", 7),
-			free_list(&stack_a), free_list(&stack_b), 1);
+			free_all(&stack_a, &stack_b, moves), 1);
 	if (apply_moves(&stack_a, &stack_b, moves) != 0)
-		return (free_list(&stack_a), free_list(&stack_b), 1);
+		return (free_all(&stack_a, &stack_b, moves), 1);
 	if (is_sorted(&stack_a) && !stack_b)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
-	free_matrix(moves);
-	return (free_list(&stack_a), free_list(&stack_b), 0);
+	return (free_all(&stack_a, &stack_b, moves), 0);
 }
