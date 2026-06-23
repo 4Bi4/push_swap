@@ -12,18 +12,6 @@
 
 #include "checker.h"
 
-//	Frees all the allocated memory for both stacks and the moves matrix
-//	If NULL is passed that parameter is ignored
-void	free_all(t_stack **stack_a, t_stack **stack_b, char **moves)
-{
-	if (moves)
-		free_matrix(moves);
-	if (stack_a)
-		free_list(stack_a);
-	if (stack_b)
-		free_list(stack_b);
-}
-
 //	Loads Stack A with the revieced args
 //	\returns
 //	1 if ok, 0 if error
@@ -41,47 +29,24 @@ static int	load_stack(t_stack **stack_a, char **argv, int argc)
 	return (0);
 }
 
-//	Reads the moves from stdin and stores them
-//	in an array of strings
-//	\returns
-//	the array of moves, NULL if error
-static char	**read_moves(void)
-{
-	char	**moves;
-	char	*line;
-	int		i;
-
-	moves = malloc(sizeof(char *) * 1000);
-	if (!moves)
-		return (NULL);
-	i = 0;
-	line = get_next_line(0);
-	while (line)
-	{
-		moves[i] = line;
-		i++;
-		line = get_next_line(0);
-	}
-	moves[i] = NULL;
-	return (moves);
-}
-
-//	Replays the given move list onto the stacks
+//	Reads the moves from stdin and 
+//	replays them onto the stacks
 //	\returns
 //	0 if ok, 1 if error
-static int	apply_moves(t_stack **stack_a, t_stack **stack_b, char **moves)
+static int	apply_moves(t_stack **stack_a, t_stack **stack_b)
 {
-	int	i;
+	char	*move;
 
-	i = 0;
-	while (moves[i])
+	move = get_next_line(0);
+	while (move)
 	{
-		if (move_check(stack_a, stack_b, moves[i]) != 0)
+		if (move_check(stack_a, stack_b, move) != 0)
 		{
 			write(2, "Error\n", 7);
-			return (1);
+			return (free(move), 1);
 		}
-		i++;
+		free(move);
+		move = get_next_line(0);
 	}
 	return (0);
 }
@@ -91,26 +56,21 @@ int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	char	**moves;
 
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc < 2)
 		return (1);
 	if (load_stack(&stack_a, argv, argc) != 0)
-		return (free_all(&stack_a, &stack_b, NULL), 1);
+		return (free_list(&stack_a), free_list(&stack_b), 1);
 	if (dup_check(&stack_a) != 0)
-		return (free_all(&stack_a, &stack_b, NULL), 1);
+		return (free_list(&stack_a), free_list(&stack_b), 1);
 	indexer(stack_a);
-	moves = read_moves();
-	if (!moves)
-		return (write(2, "Error\n", 7),
-			free_all(&stack_a, &stack_b, moves), 1);
-	if (apply_moves(&stack_a, &stack_b, moves) != 0)
-		return (free_all(&stack_a, &stack_b, moves), 1);
+	if (apply_moves(&stack_a, &stack_b) != 0)
+		return (free_list(&stack_a), free_list(&stack_b), 1);
 	if (is_sorted(&stack_a) && !stack_b)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
-	return (free_all(&stack_a, &stack_b, moves), 0);
+	return (free_list(&stack_a), free_list(&stack_b), 0);
 }

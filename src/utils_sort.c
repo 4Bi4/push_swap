@@ -91,15 +91,12 @@ void	sort_five(t_stack **stack_a, t_stack **stack_b)
 	target = 0;
 	while (target < 2)
 	{
-		if ((*stack_a)->index != target)
+		while ((*stack_a)->index != target)
 		{
-			while ((*stack_a)->index != target)
-			{
-				if (check_position(stack_a, target) <= list_size(*stack_a) / 2)
-					*stack_a = rotate(stack_a, 'a', 1);
-				else
-					*stack_a = rev_rotate(stack_a, 'a', 1);
-			}
+			if (check_position(stack_a, target) <= list_size(*stack_a) / 2)
+				*stack_a = rotate(stack_a, 'a', 1);
+			else
+				*stack_a = rev_rotate(stack_a, 'a', 1);
 		}
 		push(stack_a, stack_b, 'b', 1);
 		target++;
